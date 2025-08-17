@@ -3,10 +3,18 @@ export interface MenuItem {
   name: string;
   description: string;
   price: number;
+  originalPrice?: number; // For showing discounts
   category: string;
   subcategory?: string;
   isSpecial?: boolean;
   isVegetarian?: boolean;
+  image?: string; // Food image URL
+  ingredients?: string[]; // List of key ingredients
+  spiceLevel?: 'mild' | 'medium' | 'hot' | 'very-hot'; // Spice level indicator
+  servingSize?: string; // e.g., "Serves 2", "Half/Full"
+  preparationTime?: string; // e.g., "15-20 mins"
+  allergens?: string[]; // Common allergens
+  customizations?: string[]; // Available customizations
 }
 
 export const menuData: MenuItem[] = [
@@ -18,6 +26,11 @@ export const menuData: MenuItem[] = [
     price: 100,
     category: "soups",
     isVegetarian: true,
+    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Mixed vegetables", "Clear broth", "Herbs"],
+    spiceLevel: "mild",
+    preparationTime: "10-12 mins",
+    customizations: ["Extra vegetables", "Less salt", "Without garlic"],
   },
   {
     id: "soup-2",
@@ -26,6 +39,11 @@ export const menuData: MenuItem[] = [
     price: 120,
     category: "soups",
     isVegetarian: true,
+    image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Vegetables", "Garlic", "Crispy noodles", "Soy sauce"],
+    spiceLevel: "medium",
+    preparationTime: "12-15 mins",
+    customizations: ["Extra noodles", "Less spicy", "Extra vegetables"],
   },
   {
     id: "soup-3",
@@ -93,6 +111,13 @@ export const menuData: MenuItem[] = [
     category: "starters",
     subcategory: "vegetarian",
     isVegetarian: true,
+    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Cauliflower", "Curry leaves", "Red chili", "Ginger-garlic", "South Indian spices"],
+    spiceLevel: "hot",
+    preparationTime: "15-18 mins",
+    allergens: ["Gluten"],
+    customizations: ["Less spicy", "Extra crispy", "No onions", "Jain style"],
+    servingSize: "Serves 2-3",
   },
   {
     id: "starter-veg-2",
@@ -102,15 +127,29 @@ export const menuData: MenuItem[] = [
     category: "starters",
     subcategory: "vegetarian",
     isVegetarian: true,
+    image: "https://images.unsplash.com/photo-1506280754576-f6fa8a873550?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Fresh mushrooms", "Curry leaves", "Red chili", "Yogurt marinade"],
+    spiceLevel: "hot",
+    preparationTime: "12-15 mins",
+    customizations: ["Less spicy", "Extra mushrooms", "Dry preparation"],
+    servingSize: "Serves 2-3",
   },
   {
     id: "starter-veg-3",
     name: "Paneer 65",
     description: "Marinated paneer cubes deep-fried and seasoned with aromatic spices.",
     price: 195,
+    originalPrice: 220,
     category: "starters",
     subcategory: "vegetarian",
     isVegetarian: true,
+    image: "https://images.unsplash.com/photo-1631452180539-96aca7d48617?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Fresh paneer", "Yogurt", "Ginger-garlic", "Red chili powder"],
+    spiceLevel: "medium",
+    preparationTime: "18-20 mins",
+    customizations: ["Less spicy", "Extra gravy", "Butter variant", "No food coloring"],
+    servingSize: "Serves 2-3",
+    isSpecial: true,
   },
   {
     id: "starter-veg-4",
@@ -169,6 +208,13 @@ export const menuData: MenuItem[] = [
     category: "starters",
     subcategory: "non-vegetarian",
     isVegetarian: false,
+    image: "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Tender chicken", "Yogurt marinade", "Curry leaves", "Red chili"],
+    spiceLevel: "hot",
+    preparationTime: "20-25 mins",
+    customizations: ["Less spicy", "Boneless option", "Extra gravy", "Dry preparation"],
+    servingSize: "Serves 3-4",
+    isSpecial: true,
   },
   {
     id: "starter-nonveg-2",
@@ -178,6 +224,12 @@ export const menuData: MenuItem[] = [
     category: "starters",
     subcategory: "non-vegetarian",
     isVegetarian: false,
+    image: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Chicken chunks", "Black pepper", "Onions", "Curry leaves"],
+    spiceLevel: "very-hot",
+    preparationTime: "18-22 mins",
+    customizations: ["Medium spicy", "Extra pepper", "No onions", "With gravy"],
+    servingSize: "Serves 2-3",
   },
   {
     id: "starter-nonveg-3",
@@ -187,6 +239,13 @@ export const menuData: MenuItem[] = [
     category: "starters",
     subcategory: "non-vegetarian",
     isVegetarian: false,
+    image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Chicken wings", "Special marinade", "Breadcrumbs", "Sauces"],
+    spiceLevel: "medium",
+    preparationTime: "25-30 mins",
+    customizations: ["Spicy sauce", "Honey glaze", "BBQ style", "Plain fried"],
+    servingSize: "5 pieces",
+    isSpecial: true,
   },
   {
     id: "starter-nonveg-4",
@@ -462,6 +521,13 @@ export const menuData: MenuItem[] = [
     price: 220,
     category: "biryani",
     isVegetarian: true,
+    image: "https://images.unsplash.com/photo-1563379091339-03246963d999?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Basmati rice", "Mixed vegetables", "Saffron", "Biryani spices", "Mint", "Fried onions"],
+    spiceLevel: "medium",
+    preparationTime: "45-50 mins",
+    customizations: ["Extra vegetables", "Less oil", "Brown rice", "No saffron", "Extra mint"],
+    servingSize: "Serves 2",
+    isSpecial: true,
   },
   {
     id: "biryani-2",
@@ -470,6 +536,13 @@ export const menuData: MenuItem[] = [
     price: 260,
     category: "biryani",
     isVegetarian: true,
+    image: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Basmati rice", "Fresh paneer", "Saffron", "Yogurt", "Mint", "Traditional spices"],
+    spiceLevel: "medium",
+    preparationTime: "50-55 mins",
+    customizations: ["Extra paneer", "Less spicy", "No food coloring", "Extra gravy"],
+    servingSize: "Serves 2-3",
+    isSpecial: true,
   },
   {
     id: "biryani-3",
@@ -478,6 +551,13 @@ export const menuData: MenuItem[] = [
     price: 280,
     category: "biryani",
     isVegetarian: false,
+    image: "https://images.unsplash.com/photo-1563379091339-03246963d999?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Basmati rice", "Tender chicken", "Saffron", "Mint", "Caramelized onions", "Traditional spices"],
+    spiceLevel: "medium",
+    preparationTime: "60-70 mins",
+    customizations: ["Boneless chicken", "Extra spicy", "Less oil", "No food coloring"],
+    servingSize: "Serves 2-3",
+    isSpecial: true,
   },
   {
     id: "biryani-4",
@@ -486,6 +566,13 @@ export const menuData: MenuItem[] = [
     price: 360,
     category: "biryani",
     isVegetarian: false,
+    image: "https://images.unsplash.com/photo-1599043513900-ed6fe01d3833?w=400&h=300&fit=crop&crop=center",
+    ingredients: ["Basmati rice", "Succulent mutton", "Saffron", "Yogurt marinade", "Mint", "Premium spices"],
+    spiceLevel: "hot",
+    preparationTime: "75-90 mins",
+    customizations: ["Extra mutton", "Medium spicy", "No bones", "Extra gravy"],
+    servingSize: "Serves 3-4",
+    isSpecial: true,
   },
   {
     id: "biryani-5",

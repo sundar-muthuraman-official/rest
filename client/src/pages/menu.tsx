@@ -26,13 +26,17 @@ export default function Menu() {
 
   const renderMenuItems = (items: MenuItem[]) => {
     return items.map((item) => (
-      <Card key={item.id} className="hover:shadow-xl transition duration-300 group" data-testid={`menu-item-${item.id}`}>
-        <CardContent className="p-6">
-          <div className="flex justify-between items-start mb-2">
-            <h4 className="font-serif text-lg font-semibold text-restaurant-primary group-hover:text-restaurant-secondary transition-colors" data-testid={`menu-item-name-${item.id}`}>
-              {item.name}
-            </h4>
-            <div className="flex items-center space-x-2">
+      <Card key={item.id} className="hover:shadow-2xl transition-all duration-300 group overflow-hidden" data-testid={`menu-item-${item.id}`}>
+        {/* Food Image */}
+        {item.image && (
+          <div className="relative h-48 overflow-hidden">
+            <img 
+              src={item.image} 
+              alt={item.name}
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+              data-testid={`menu-item-image-${item.id}`}
+            />
+            <div className="absolute top-2 right-2 flex gap-2">
               {item.isVegetarian && (
                 <Badge variant="secondary" className="bg-green-100 text-green-800" data-testid={`menu-item-veg-${item.id}`}>
                   <Leaf size={12} className="mr-1" />
@@ -46,13 +50,81 @@ export default function Menu() {
                 </Badge>
               )}
             </div>
+            {item.spiceLevel && (
+              <div className="absolute bottom-2 left-2">
+                <Badge variant="outline" className="bg-white/90 text-red-600 border-red-300">
+                  🌶️ {item.spiceLevel}
+                </Badge>
+              </div>
+            )}
           </div>
+        )}
+        
+        <CardContent className="p-6">
+          <div className="flex justify-between items-start mb-2">
+            <h4 className="font-serif text-lg font-semibold text-restaurant-primary group-hover:text-restaurant-secondary transition-colors" data-testid={`menu-item-name-${item.id}`}>
+              {item.name}
+            </h4>
+            <div className="flex flex-col items-end">
+              {item.originalPrice && (
+                <span className="text-sm text-gray-400 line-through">₹{item.originalPrice}</span>
+              )}
+              <div className="text-restaurant-secondary font-bold text-xl" data-testid={`menu-item-price-${item.id}`}>
+                ₹{item.price}
+              </div>
+            </div>
+          </div>
+          
           <p className="text-gray-600 mb-3 text-sm leading-relaxed" data-testid={`menu-item-description-${item.id}`}>
             {item.description}
           </p>
-          <div className="text-restaurant-secondary font-bold text-lg" data-testid={`menu-item-price-${item.id}`}>
-            ₹{item.price}
+
+          {/* Ingredients */}
+          {item.ingredients && (
+            <div className="mb-3">
+              <div className="flex flex-wrap gap-1">
+                {item.ingredients.slice(0, 3).map((ingredient, index) => (
+                  <Badge key={index} variant="outline" className="text-xs bg-gray-50">
+                    {ingredient}
+                  </Badge>
+                ))}
+                {item.ingredients.length > 3 && (
+                  <Badge variant="outline" className="text-xs bg-gray-50">
+                    +{item.ingredients.length - 3} more
+                  </Badge>
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Additional Info */}
+          <div className="flex justify-between items-center text-xs text-gray-500">
+            {item.preparationTime && (
+              <span>⏱️ {item.preparationTime}</span>
+            )}
+            {item.servingSize && (
+              <span>👥 {item.servingSize}</span>
+            )}
           </div>
+
+          {/* Customizations */}
+          {item.customizations && item.customizations.length > 0 && (
+            <div className="mt-3 pt-3 border-t border-gray-100">
+              <p className="text-xs text-gray-500 mb-1">Customizations available:</p>
+              <div className="flex flex-wrap gap-1">
+                {item.customizations.slice(0, 2).map((customization, index) => (
+                  <Badge key={index} variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-200">
+                    {customization}
+                  </Badge>
+                ))}
+                {item.customizations.length > 2 && (
+                  <Badge variant="outline" className="text-xs bg-blue-50 text-blue-700 border-blue-200">
+                    +{item.customizations.length - 2} more
+                  </Badge>
+                )}
+              </div>
+            </div>
+          )}
         </CardContent>
       </Card>
     ));
