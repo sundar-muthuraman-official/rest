@@ -46,9 +46,9 @@ export default function Footer() {
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <Link href={link.href}>
-                    <a className="text-restaurant-accent hover:text-white transition duration-300" data-testid={`footer-link-${link.name.toLowerCase()}`}>
+                    <span className="text-restaurant-accent hover:text-white transition duration-300 cursor-pointer" data-testid={`footer-link-${link.name.toLowerCase()}`}>
                       {link.name}
-                    </a>
+                    </span>
                   </Link>
                 </li>
               ))}

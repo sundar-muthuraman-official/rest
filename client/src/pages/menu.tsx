@@ -3,12 +3,21 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { menuData, menuCategories, type MenuItem } from "@/data/menu";
-import { Leaf, Star } from "lucide-react";
+import { Leaf, Star, Filter, Utensils } from "lucide-react";
+
+type FilterType = "all" | "vegetarian" | "non-vegetarian";
 
 export default function Menu() {
   const [activeCategory, setActiveCategory] = useState("soups");
+  const [dietFilter, setDietFilter] = useState<FilterType>("all");
 
-  const filteredItems = menuData.filter(item => item.category === activeCategory);
+  const filteredItems = menuData.filter(item => {
+    const categoryMatch = item.category === activeCategory;
+    const dietMatch = dietFilter === "all" || 
+      (dietFilter === "vegetarian" && item.isVegetarian) ||
+      (dietFilter === "non-vegetarian" && !item.isVegetarian);
+    return categoryMatch && dietMatch;
+  });
   const currentCategory = menuCategories.find(cat => cat.id === activeCategory);
 
   const getSubcategoryItems = (subcategory?: string) => {
@@ -61,6 +70,56 @@ export default function Menu() {
           </p>
         </div>
 
+        {/* Dietary Filter */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-white rounded-lg p-2 shadow-lg inline-flex items-center space-x-2" data-testid="diet-filter">
+            <Filter size={16} className="text-restaurant-primary" />
+            <span className="text-sm font-medium text-gray-700">Filter:</span>
+            <Button
+              onClick={() => setDietFilter("all")}
+              variant={dietFilter === "all" ? "default" : "ghost"}
+              size="sm"
+              className={`transition duration-300 ${
+                dietFilter === "all"
+                  ? "bg-restaurant-primary text-white"
+                  : "hover:bg-gray-100"
+              }`}
+              data-testid="filter-all"
+            >
+              <Utensils size={14} className="mr-1" />
+              All Items
+            </Button>
+            <Button
+              onClick={() => setDietFilter("vegetarian")}
+              variant={dietFilter === "vegetarian" ? "default" : "ghost"}
+              size="sm"
+              className={`transition duration-300 ${
+                dietFilter === "vegetarian"
+                  ? "bg-green-600 text-white"
+                  : "hover:bg-green-50 hover:text-green-600"
+              }`}
+              data-testid="filter-vegetarian"
+            >
+              <Leaf size={14} className="mr-1" />
+              Vegetarian
+            </Button>
+            <Button
+              onClick={() => setDietFilter("non-vegetarian")}
+              variant={dietFilter === "non-vegetarian" ? "default" : "ghost"}
+              size="sm"
+              className={`transition duration-300 ${
+                dietFilter === "non-vegetarian"
+                  ? "bg-red-600 text-white"
+                  : "hover:bg-red-50 hover:text-red-600"
+              }`}
+              data-testid="filter-non-vegetarian"
+            >
+              <Utensils size={14} className="mr-1" />
+              Non-Vegetarian
+            </Button>
+          </div>
+        </div>
+
         {/* Menu Categories Navigation */}
         <div className="flex flex-wrap justify-center mb-12 bg-white rounded-lg p-2 shadow-lg" data-testid="menu-categories">
           {menuCategories.map((category) => (
@@ -92,7 +151,24 @@ export default function Menu() {
           </div>
 
           {/* Render items based on category structure */}
-          {activeCategory === "starters" || activeCategory === "tandoori" || activeCategory === "mains" ? (
+          {filteredItems.length === 0 ? (
+            <div className="text-center py-16" data-testid="no-items-found">
+              <div className="text-6xl mb-4">🍽️</div>
+              <h3 className="text-2xl font-serif font-semibold text-restaurant-primary mb-4">
+                No items found
+              </h3>
+              <p className="text-gray-600 mb-6">
+                Try adjusting your filter or explore a different category
+              </p>
+              <button
+                onClick={() => setDietFilter("all")}
+                className="text-restaurant-secondary hover:text-restaurant-primary font-medium underline"
+                data-testid="reset-filter-button"
+              >
+                Show all items
+              </button>
+            </div>
+          ) : activeCategory === "starters" || activeCategory === "tandoori" || activeCategory === "mains" ? (
             <div className="space-y-12">
               {/* Vegetarian Section */}
               {getSubcategoryItems("vegetarian").length > 0 && (

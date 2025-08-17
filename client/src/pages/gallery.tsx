@@ -1,58 +1,42 @@
+// Using your authentic restaurant photos for gallery
+
 export default function Gallery() {
   const galleryImages = [
     {
       id: 1,
-      src: "https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "Fine dining experience with elegant plating",
-      title: "Elegant Food Presentation"
+      src: "/attached_assets/849A7636_1755396277207.JPG",
+      alt: "Hearts & Plates elegant dining area with warm lighting and traditional decor",
+      title: "Warm & Welcoming Atmosphere"
     },
     {
       id: 2,
-      src: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "Traditional Indian curry dishes with aromatic spices",
-      title: "Authentic Indian Curries"
+      src: "/attached_assets/849A7611_1755396277201.JPG",
+      alt: "Hearts & Plates premium restaurant interior design",
+      title: "Sophisticated Interior"
     },
     {
       id: 3,
-      src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "Warm restaurant interior with comfortable seating",
-      title: "Cozy Dining Atmosphere"
+      src: "/attached_assets/849A7614_1755396277206.JPG",
+      alt: "Hearts & Plates cozy seating arrangement with comfortable ambiance",
+      title: "Comfortable Dining Space"
     },
     {
       id: 4,
-      src: "https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "Tandoori specialties being grilled in clay oven",
-      title: "Tandoori Specialties"
+      src: "/attached_assets/849A7618_1755396277206.JPG",
+      alt: "Hearts & Plates modern restaurant ambiance",
+      title: "Contemporary Design"
     },
     {
       id: 5,
-      src: "https://pixabay.com/get/ga4fdc48360512cf473b8748a0abbd3549431d9fc87aa1196bb387df808d494d6223f62369eeee720abecffe22b5d5f0c59b3587795d13c55c8565852b0e6bd56_1280.jpg",
-      alt: "Biryani and rice dishes with aromatic garnishes",
-      title: "Aromatic Biryani"
+      src: "/attached_assets/849A7621_1755396277207.JPG",
+      alt: "Hearts & Plates inviting dining environment",
+      title: "Perfect for Any Occasion"
     },
     {
       id: 6,
-      src: "https://pixabay.com/get/gab36e098759d2af8eb0af6eb3901f2d7fb138717ed205cf615ab103295e6253f14dd7b857f5188d106f57db4a24732f305ab5b769a9938c5b9c6af0b13f71e10_1280.jpg",
-      alt: "Chef preparing fresh dishes in modern kitchen",
-      title: "Expert Culinary Team"
-    },
-    {
-      id: 7,
-      src: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "International cuisine selection",
-      title: "International Delicacies"
-    },
-    {
-      id: 8,
-      src: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "Professional food presentation",
-      title: "Culinary Artistry"
-    },
-    {
-      id: 9,
-      src: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&h=400",
-      alt: "Restaurant dining hall setup",
-      title: "Elegant Dining Space"
+      src: "/attached_assets/849A7628_1755396277207.JPG",
+      alt: "Hearts & Plates premium dining experience setup",
+      title: "Fine Dining Excellence"
     }
   ];
 

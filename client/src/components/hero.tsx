@@ -7,39 +7,40 @@ export default function Hero() {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&h=1080')"
+          backgroundImage: "url('/attached_assets/849A7636_1755396277207.JPG')"
         }}
       >
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
       </div>
       
       <div className="relative z-10 text-center text-white px-4" data-testid="hero-content">
-        <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6" data-testid="hero-title">
+        <h1 className="font-serif text-6xl md:text-8xl font-bold mb-6 tracking-wide drop-shadow-2xl" data-testid="hero-title">
           Hearts & Plates
         </h1>
-        <p className="text-xl md:text-2xl mb-4 max-w-2xl mx-auto" data-testid="hero-subtitle">
+        <div className="w-24 h-1 bg-restaurant-accent mx-auto mb-6 rounded-full"></div>
+        <p className="text-xl md:text-3xl mb-4 max-w-3xl mx-auto font-light tracking-wide" data-testid="hero-subtitle">
           Multi-Cuisine Excellence in the Heart of Pondicherry
         </p>
-        <p className="text-lg mb-8 opacity-90" data-testid="hero-description">
-          Experience authentic flavors from Indian & International cuisines
+        <p className="text-lg md:text-xl mb-8 opacity-90 max-w-2xl mx-auto leading-relaxed" data-testid="hero-description">
+          Where traditional Indian flavors meet international cuisine in perfect harmony
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/menu">
             <Button 
-              className="bg-restaurant-secondary hover:bg-restaurant-highlight text-white px-8 py-3 rounded-lg font-semibold transition duration-300 transform hover:scale-105"
+              className="bg-restaurant-secondary hover:bg-restaurant-highlight text-white px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl"
               data-testid="button-explore-menu"
             >
-              Explore Menu
+              Explore Our Menu
             </Button>
           </Link>
           <Link href="/reservations">
             <Button 
               variant="outline"
-              className="bg-transparent border-2 border-restaurant-accent text-restaurant-accent hover:bg-restaurant-accent hover:text-white px-8 py-3 rounded-lg font-semibold transition duration-300"
+              className="bg-white/10 backdrop-blur-sm border-2 border-white/80 text-white hover:bg-white hover:text-restaurant-primary px-10 py-4 rounded-full font-semibold text-lg transition-all duration-300 hover:shadow-2xl"
               data-testid="button-reserve-table"
             >
-              Reserve Table
+              Reserve Your Table
             </Button>
           </Link>
         </div>
